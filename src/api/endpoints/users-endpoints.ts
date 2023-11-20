@@ -2,14 +2,10 @@ import { apiSlice } from "../../store/slices/api-slice";
 import { IUser } from "../interfaces";
 
 type AddUserType = {
-    login: string,
-    pass: string,
-    about: {
-        fname: string;
-        lname: string;
-        number: string;
-        description: string
-    }
+
+    fname: string;
+    lname: string;
+
 }
 
 export const usersApi = apiSlice.injectEndpoints({
@@ -41,14 +37,14 @@ export const usersApi = apiSlice.injectEndpoints({
             invalidatesTags: ['Users']
         }),
         UpdateUser: builder.mutation({
-            query: ({id,stateName,data}) => ({
-              url: `/users/${id}`, // Замените на свой путь обновления данных
-              method: 'PATCH',
-              body: {
-                [stateName]:data
-              },
+            query: ({ id, stateName, data }) => ({
+                url: `/users/${id}`, // Замените на свой путь обновления данных
+                method: 'PATCH',
+                body: {
+                    [stateName]: data
+                },
             }),
             invalidatesTags: ['Users']
-          }),
+        }),
     })
 })

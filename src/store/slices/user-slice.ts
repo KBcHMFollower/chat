@@ -1,12 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { IUser } from "../../api/interfaces";
 
-type InitialType = {
-    fname:string;
-    lname:string;
-    id:number;
-}
 
-const initialState:InitialType = {
+const initialState:IUser = {
     fname:'',
     lname:'',
     id:-1
@@ -16,9 +12,9 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers:{
-        SetUser: (state, action:PayloadAction<InitialType>)=>{
+        SetUser: (state, action:PayloadAction<IUser>)=>{
             state.fname = action.payload.fname;
-            state.lname = action.payload.fname;
+            state.lname = action.payload.lname;
             state.id = action.payload.id;
         }
     },

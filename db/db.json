@@ -1,35 +1,28 @@
 {
-    "users":[
-        {
-            "id":0,
-            "login":"testlog",
-            "pass":"test-pass",
-            "about":{
-                "fname":"Vlad",
-                "lname": "Melnikov",
-                "number": "89185248722",
-                "description":"lorem"
-            }
-        },
-        {
-            "id":1,
-            "login":"testlog1",
-            "pass":"test-pass1",
-            "about":{
-                "fname":"Sasha",
-                "lname": "Alevievin",
-                "number": "891852487432",
-                "description":"lorem1"
-            }
-        }
-    ],
-    "messages":[
-        {
-            "inuserid":3,
-            "touserid":4,
-            "id":0,
-            "message":"message",
-            "date":""
-        }
-    ]
+  "users": [
+    {
+      "id": 0,
+      "fname": "Vlad",
+      "lname": "Melnikov"
+    },
+    {
+      "id": 1,
+      "fname": "Sasha",
+      "lname": "Alevievin"
+    },
+    {
+      "fname": "Vladislav",
+      "lname": "Alexey",
+      "id": 2
+    }
+  ],
+  "messages": [
+    {
+      "inuserid": 3,
+      "touserid": 4,
+      "id": 0,
+      "message": "message",
+      "date": ""
+    }
+  ]
 }
