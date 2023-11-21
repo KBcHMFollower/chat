@@ -1,31 +1,63 @@
-import { Avatar, Button, Paper, Typography } from '@mui/material'
+import { Avatar, Box, Paper, Typography } from '@mui/material'
 import React, { FC } from 'react'
 import { stringAvatar } from '../../services/avatar-services'
-import { IUser } from '../../api/interfaces'
+import { IMessage, IUser } from '../../api/interfaces'
 
+type PropsType = {
+    user: IUser;
+    message: IMessage;
+    incoming?: boolean;
+}
 
+export const MessageItem: FC<PropsType> = ({ incoming, message, user }) => {
 
-export const MessageItem:FC<{user:IUser}> = ({user}) => {
-    return (
-        <Button>
-            <Paper elevation={10}
+    const MessageAvatar = () => (
+        <Box>
+            <Avatar {...stringAvatar(user.fname + ' ' + user.lname)}
                 sx={{
-                    display: 'flex',
-                    gap: 2,
-                    justifyContent: 'space-between',
-                    alignItems:'center',
-                    backgroundColor:'#D8DBDD',
-                    width:600,
-                    height:50,
-                    padding:3
+                    width: 100,
+                    height: 100
+                }} />
+        </Box>
+    )
+
+    const MessageText = () => (
+        <Box>
+            <Paper elevation={6}
+                sx={{
+                    maxWidth: 100,
+                    padding: 3
                 }}>
-                    <Avatar
-                     {...stringAvatar(user.fname + ' ' + user.lname)}
-                     sx={{width:70, height:70}}/>
-                     <Typography>
-                     {user.fname + ' ' + user.lname}
-                     </Typography>
+                <Typography fontSize={20}
+                    sx={{ overflowWrap: 'break-word' }}>
+                    {message.message}
+                </Typography>
             </Paper>
-        </Button>
+        </Box>
+    )
+
+    return (
+        <Box sx={{
+            display: 'flex',
+            gap: 2,
+            width: '100%',
+            padding: 5,
+            justifyContent: incoming ? 'end' : 'start',
+        }}>
+            {incoming ? (
+                <>
+
+                    <MessageText />
+                    <MessageAvatar />
+                </>
+            ) : (
+                <>
+
+                    <MessageAvatar />
+                    <MessageText />
+                </>
+            )}
+
+        </Box>
     )
 }

@@ -1,7 +1,7 @@
 import { apiSlice } from "../../store/slices/api-slice";
 import { IMessage, IUser } from "../interfaces";
 
-type SentMessageType = {
+export type SentMessageType = {
     inuserid:number;
     touserid:number;
     message:string;
@@ -14,7 +14,7 @@ export const messagesApi = apiSlice.injectEndpoints({
             query: ({ limit, page, userid }) => {
                 const limitProps = limit ? `&_limit=${limit}` : '';
                 const pageProps = page ? `&_page=${page}` : '';
-                const userIdProps = `&_inuserid=${userid}`
+                const userIdProps = `&inuserid=${userid}`
                 return `messages?${limitProps}${pageProps}${userIdProps}`;
             },
             transformResponse(response: IMessage[], meta) {
@@ -29,7 +29,7 @@ export const messagesApi = apiSlice.injectEndpoints({
             query: ({ limit, page, userid }) => {
                 const limitProps = limit ? `&_limit=${limit}` : '';
                 const pageProps = page ? `&_page=${page}` : '';
-                const userIdProps = `&_touserid=${userid}`
+                const userIdProps = `&touserid=${userid}`
                 return `messages?${limitProps}${pageProps}${userIdProps}`;
             },
             transformResponse(response: IMessage[], meta) {
@@ -40,7 +40,7 @@ export const messagesApi = apiSlice.injectEndpoints({
             },
             providesTags: result => ['Messages']
         }),
-        CreateUser: builder.mutation<IUser, SentMessageType>({
+        SentMessage: builder.mutation<IMessage, SentMessageType>({
             query: (newMessage) => ({
                 url: '/messages',
                 method: 'POST',

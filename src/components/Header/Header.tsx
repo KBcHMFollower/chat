@@ -16,7 +16,7 @@ export const Header:FC<PropsType> = ({user}) => {
 
     return (
         <Paper elevation={10}
-            sx={{ width: '100vw', height: 100, backgroundColor: '#D8DBDD' }}>
+            sx={{ width: '100vw', height: '10vh', backgroundColor: '#D8DBDD' }}>
             <Container sx={{
                 display: 'flex',
                 justifyContent: 'start',
@@ -26,7 +26,7 @@ export const Header:FC<PropsType> = ({user}) => {
                     onClick={() => setOpen(!open)}
                 >
                     <Avatar {...stringAvatar(user.fname + ' ' + user.lname)}
-                        sx={{ width: 70, height: 70 }} />
+                        sx={{ width: '7vh', height: '7vh' }} />
                 </Button>
 
                 <Collapse
