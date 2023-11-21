@@ -8,7 +8,7 @@ type SentMessageType = {
     date:Date;
 }
 
-export const usersApi = apiSlice.injectEndpoints({
+export const messagesApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         GetSentMessages: builder.query<{ messages: IMessage[]; totalCount: number }, { userid:  number;limit?: number; page?: number }>({
             query: ({ limit, page, userid }) => {

@@ -10,7 +10,7 @@ type AddUserType = {
 
 export const usersApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        GetAllUsers: builder.query<{ clients: IUser[]; totalCount: number }, { limit?: number; page?: number }>({
+        GetAllUsers: builder.query<{ users: IUser[]; totalCount: number }, { limit?: number; page?: number }>({
             query: ({ limit, page }) => {
                 const limitProps = limit ? `&_limit=${limit}` : '';
                 const pageProps = page ? `&_page=${page}` : '';
@@ -18,7 +18,7 @@ export const usersApi = apiSlice.injectEndpoints({
             },
             transformResponse(response: IUser[], meta) {
                 return {
-                    clients: response,
+                    users: response,
                     totalCount: Number(meta?.response?.headers.get('X-Total-Count')),
                 };
             },
